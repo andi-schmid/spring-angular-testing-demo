@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutGap="5vh">
+  <adb-search-input
+    (doSearch)="onSearch($event)">
+  </adb-search-input>
+  <adb-search-result
+    [personList]="personList$ | async"
+    (personSelected)="onPersonSelected($event)">
+  </adb-search-result>
+</div>

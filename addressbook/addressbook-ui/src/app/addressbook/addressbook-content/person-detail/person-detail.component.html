@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Person details</mat-card-title>
+  <div fxLayout="column" fxLayoutGap="1vh" *ngIf="person$ | async as person">
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">Firstname</strong><span id="firstname" fxFlexOffset="1vw">{{person.firstname}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">Lastname</strong><span id="lastname" fxFlexOffset="1vw">{{person.lastname}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">Street</strong><span id="street" fxFlexOffset="1vw">{{person.street}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">ZIP</strong><span id="zip" fxFlexOffset="1vw">{{person.zip}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">City</strong><span id="city" fxFlexOffset="1vw">{{person.city}}</span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start">
+      <strong class="output-label">Phone</strong><span id="phone" fxFlexOffset="1vw">{{person.phone}}</span>
+    </div>
+  </div>
+</mat-card>

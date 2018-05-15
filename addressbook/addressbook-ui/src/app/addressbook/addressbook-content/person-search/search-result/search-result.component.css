@@ -1,0 +1,7 @@
+mat-row.selected {
+  background-color: #e1f5fe;
+}
+
+mat-row:hover {
+  background-color: #fafafa;
+}

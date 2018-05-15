@@ -1,0 +1,32 @@
+<mat-expansion-panel [expanded]="dataSource.data.length > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Search Result</mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="mat-elevation-z8">
+    <mat-table id="search-result-table" #searchResultTable [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef>Firstname</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.firstname}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef>Lastname</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.lastname}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="zip">
+        <mat-header-cell *matHeaderCellDef>ZIP</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.zip}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.city}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="openDetails($event, row)"></mat-row>
+    </mat-table>
+  </div>
+</mat-expansion-panel>

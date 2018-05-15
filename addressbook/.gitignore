@@ -1,0 +1,15 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# OSX System Dateien
+.DS_Store
+
+# IntelliJ configuration files
+.idea/workspace.xml
+.idea/dataSources.local.xml
+
+# Build artefacts
+target/
+dist
+nodejs
+node_modules
+**/*npm-debug.log.*

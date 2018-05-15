@@ -1,0 +1,28 @@
+<mat-expansion-panel expanded="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Search</mat-panel-title>
+  </mat-expansion-panel-header>
+  <form class="example-form" [formGroup]="searchForm" (ngSubmit)="search()">
+    <div fxLayout="row" fxLayoutGap="2vw">
+      <mat-form-field>
+        <input id="firstname" matInput placeholder="Firstname" formControlName="firstname" autofocus>
+        <button id="firstnameClearBtn" type="button" mat-button *ngIf="searchForm.get('firstname').value"
+                matSuffix mat-icon-button aria-label="Clear" (click)="searchForm.get('firstname').setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <input id="lastname" matInput placeholder="Lastname" formControlName="lastname">
+        <button id="lastnameClearBtn" type="button" mat-button *ngIf="searchForm.get('lastname').value"
+                matSuffix mat-icon-button aria-label="Clear" (click)="searchForm.get('lastname').setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button id="searchBtn" type="submit" mat-icon-button
+              [disabled]="!(searchForm.get('firstname').value || searchForm.get('lastname').value)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+  </form>
+</mat-expansion-panel>
