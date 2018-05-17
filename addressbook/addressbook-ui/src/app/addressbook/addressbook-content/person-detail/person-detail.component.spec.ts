@@ -13,7 +13,6 @@ import {Person} from '../../models/addressbook.model';
 let component: PersonDetailComponent;
 let fixture: ComponentFixture<PersonDetailComponent>;
 let debugElement: DebugElement;
-let htmlElement: HTMLElement;
 let page: Page;
 
 const person: Person = {
@@ -81,34 +80,43 @@ function createComponent(): void {
   fixture = TestBed.createComponent(PersonDetailComponent);
   component = fixture.componentInstance;
   debugElement = fixture.debugElement;
-  htmlElement = debugElement.nativeElement;
   page = new Page();
 
   fixture.detectChanges();
 
   fixture.whenStable().then(() => {
 
-    page.addPageElements();
     fixture.detectChanges();
   });
 }
 
 class Page {
 
-  firstname: HTMLSpanElement;
-  lastname: HTMLSpanElement;
-  street: HTMLSpanElement;
-  zip: HTMLSpanElement;
-  city: HTMLSpanElement;
-  phone: HTMLSpanElement;
+  get firstname(): HTMLSpanElement {
+    return this.query('#firstname');
+  }
 
-  addPageElements(): void {
+  get lastname(): HTMLSpanElement {
+    return this.query('#lastname');
+  }
 
-    this.firstname = htmlElement.querySelector('#firstname');
-    this.lastname = htmlElement.querySelector('#lastname');
-    this.street = htmlElement.querySelector('#street');
-    this.zip = htmlElement.querySelector('#zip');
-    this.city = htmlElement.querySelector('#city');
-    this.phone = htmlElement.querySelector('#phone');
+  get street(): HTMLSpanElement {
+    return this.query('#street');
+  }
+
+  get zip(): HTMLSpanElement {
+    return this.query('#zip');
+  }
+
+  get city(): HTMLSpanElement {
+    return this.query('#city');
+  }
+
+  get phone(): HTMLSpanElement {
+    return this.query('#phone');
+  }
+
+  private query<T>(selector: string): T {
+    return fixture.nativeElement.querySelector(selector);
   }
 }

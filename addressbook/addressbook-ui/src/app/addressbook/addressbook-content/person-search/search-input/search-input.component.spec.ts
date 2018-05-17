@@ -136,7 +136,6 @@ describe('SearchInputComponent', () => {
     page.lastname.dispatchEvent(newEvent('input'));
 
     fixture.detectChanges();
-    page.addClearButtons();
     page.firstnameClearBtn.click();
 
     fixture.detectChanges();
@@ -160,7 +159,6 @@ describe('SearchInputComponent', () => {
     page.lastname.dispatchEvent(newEvent('input'));
 
     fixture.detectChanges();
-    page.addClearButtons();
     page.lastnameClearBtn.click();
 
     fixture.detectChanges();
@@ -185,32 +183,34 @@ function createComponent(): void {
   fixture.detectChanges();
 
   fixture.whenStable().then(() => {
-
-    page.addPageElements();
     fixture.detectChanges();
   });
 }
 
 class Page {
 
-  firstname: HTMLInputElement;
-  firstnameClearBtn: HTMLButtonElement;
-  lastname: HTMLInputElement;
-  lastnameClearBtn: HTMLButtonElement;
-  searchBtn: HTMLButtonElement;
-
-  addPageElements(): void {
-
-    this.firstname = htmlElement.querySelector('#firstname');
-    this.lastname = htmlElement.querySelector('#lastname');
-    this.searchBtn = htmlElement.querySelector('#searchBtn');
-
-    this.addClearButtons();
+  get firstname(): HTMLInputElement {
+    return this.query('#firstname');
   }
 
-  addClearButtons(): void {
-    this.firstnameClearBtn = htmlElement.querySelector('#firstnameClearBtn');
-    this.lastnameClearBtn = htmlElement.querySelector('#lastnameClearBtn');
+  get firstnameClearBtn(): HTMLButtonElement {
+    return this.query('#firstnameClearBtn');
+  }
+
+  get lastname(): HTMLInputElement {
+    return this.query('#lastname');
+  }
+
+  get lastnameClearBtn(): HTMLButtonElement {
+    return this.query('#lastnameClearBtn');
+  }
+
+  get searchBtn(): HTMLButtonElement {
+    return this.query('#searchBtn');
+  }
+
+  private query<T>(selector: string): T {
+    return fixture.nativeElement.querySelector(selector);
   }
 }
 
